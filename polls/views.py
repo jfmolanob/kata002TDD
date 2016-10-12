@@ -8,7 +8,7 @@ from django.core import serializers
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Trabajador, TrabajadorForm, UserForm, Comentario
+from .models import Trabajador, TrabajadorForm, UserForm, Comentario, LoginForm
 from .models import TiposDeServicio
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
@@ -20,15 +20,16 @@ def index(request):
     tipos_de_servicios = TiposDeServicio.objects.all()
     form_trabajador = TrabajadorForm(request.POST)
     form_usuario = UserForm(request.POST)
+    form_login = LoginForm(request.POST)
 
     context = {'trabajadores': trabajadores, 'tipos_de_servicios': tipos_de_servicios,
-               'form_trabajador': form_trabajador, 'form_usuario': form_usuario, 'base_url': settings.STATIC_URL}
+               'form_trabajador': form_trabajador, 'form_usuario': form_usuario, 'base_url': settings.STATIC_URL, 'form_login': form_login}
     return render(request, 'polls/index.html', context)
 
 
 def login(request):
-    username = request.POST.get('usrname', '')
-    password = request.POST.get('psw', '')
+    username = request.POST.get('username_login', '')
+    password = request.POST.get('password_login', '')
     user = auth.authenticate(username=username, password=password)
     if user is not None:
         auth.login(request, user)

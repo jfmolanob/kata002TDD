@@ -42,6 +42,9 @@
 <div class="jumbotron" style="padding-left: 20px; height: 50%">
     <h1>Busco Ayuda</h1>
     <p>Encuentra aquí la ayuda que necesitas.</p>
+    {% if user.is_authenticated %}
+        <p id="id_bienvenida">Bienvenido al sistema.</p>
+    {% endif %}
 </div>
 {% if messages %}
     {% for message in messages %}
@@ -97,6 +100,7 @@
     </div>
 {% endif %}
 {% include "polls/registro.html" %}
+{% include "polls/login.html" %}
 <!--suppress JSUnresolvedFunction -->
 <script>
     $(document).ready(function () {

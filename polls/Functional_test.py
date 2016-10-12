@@ -19,7 +19,7 @@ class FunctionalTest (TestCase):
         self.browser.get('http://localhost:8000')
         link = self.browser.find_element_by_id('id_register')
         link.click()
-        self.browser.implicitly_wait(2000)
+        self.browser.implicitly_wait(4000)
 
         nombre = self.browser.find_element_by_id('id_nombre')
         nombre.send_keys('Jose Miguel')
@@ -51,7 +51,7 @@ class FunctionalTest (TestCase):
         botonGrabar = self.browser.find_element_by_id('id_grabar')
         botonGrabar.click()
 
-        self.browser.implicitly_wait(2000)
+        self.browser.implicitly_wait(4000)
         span = self.browser.find_element(By.XPATH, '//span[text()="Jose Miguel Suarez"]')
         self.assertIn("Jose Miguel Suarez", span.text)
 
@@ -60,7 +60,7 @@ class FunctionalTest (TestCase):
         span = self.browser.find_element(By.XPATH, '//span[text()="Jose Miguel Suarez"]')
         span.click()
 
-        self.browser.implicitly_wait(15000)
+        self.browser.implicitly_wait(5000)
 
         h2 = self.browser.find_element(By.XPATH, '//h2[text()="Jose Miguel Suarez"]')
         self.assertIn("Jose Miguel Suarez", h2.text)
@@ -70,7 +70,7 @@ class FunctionalTest (TestCase):
         link = self.browser.find_element_by_id('id_login')
         link.click()
 
-        self.browser.implicitly_wait(2000)
+        self.browser.implicitly_wait(4000)
 
         nombreUsuario = self.browser.find_element_by_id('id_username_login')
         nombreUsuario.send_keys('jm.suarez201')
