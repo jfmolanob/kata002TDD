@@ -85,3 +85,37 @@ class FunctionalTest (TestCase):
 
         bienvenida = self.browser.find_element_by_id('id_bienvenida')
         self.assertIsNotNone(bienvenida)
+
+    def test05_editar(self):
+        self.test04_login();
+        link = self.browser.find_element_by_id('id_editar')
+        link.click()
+        self.browser.implicitly_wait(4000)
+
+        nombre = self.browser.find_element_by_id('id_nombre')
+        nombre.send_keys('John')
+
+        apellidos = self.browser.find_element_by_id('id_apellidos')
+        apellidos.send_keys('Molano')
+
+        experiencia = self.browser.find_element_by_id('id_aniosExperiencia')
+        experiencia.send_keys('5')
+
+        self.browser.find_element_by_xpath(
+            "//select[@id='id_tiposDeServicio']/option[text()='Desarrollador Web']").click()
+
+        telefono = self.browser.find_element_by_id('id_telefono')
+        telefono.send_keys('317302478')
+
+        correo = self.browser.find_element_by_id('id_correo')
+        correo.send_keys('jd.patino1@uniandes.edu.co')
+
+        imagen = self.browser.find_element_by_id('id_imagen')
+        imagen.send_keys('/Users/jose/Documents/DatosMac/Jose/Trabajo/Cupitaller/FotoCierreCupiTaller201520.JPG')
+
+        botonGrabar = self.browser.find_element_by_id('id_grabar')
+        botonGrabar.click()
+
+        self.browser.implicitly_wait(4000)
+        span = self.browser.find_element(By.XPATH, '//span[text()="John Molano"]')
+        self.assertIn("John Molano", span.text)
