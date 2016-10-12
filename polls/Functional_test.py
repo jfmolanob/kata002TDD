@@ -93,21 +93,26 @@ class FunctionalTest (TestCase):
         self.browser.implicitly_wait(4000)
 
         nombre = self.browser.find_element_by_id('id_nombre')
+        nombre.clear();
         nombre.send_keys('John')
 
         apellidos = self.browser.find_element_by_id('id_apellidos')
+        apellidos.clear()
         apellidos.send_keys('Molano')
 
         experiencia = self.browser.find_element_by_id('id_aniosExperiencia')
+        experiencia.clear()
         experiencia.send_keys('5')
 
         self.browser.find_element_by_xpath(
             "//select[@id='id_tiposDeServicio']/option[text()='Desarrollador Web']").click()
 
         telefono = self.browser.find_element_by_id('id_telefono')
+        telefono.clear()
         telefono.send_keys('317302478')
 
         correo = self.browser.find_element_by_id('id_correo')
+        correo.clear()
         correo.send_keys('jd.patino1@uniandes.edu.co')
 
         imagen = self.browser.find_element_by_id('id_imagen')
