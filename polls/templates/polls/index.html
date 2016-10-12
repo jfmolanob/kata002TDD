@@ -41,9 +41,11 @@
 </ul>
 <div class="jumbotron" style="padding-left: 20px; height: 50%">
     <h1>Busco Ayuda</h1>
-    <p>Encuentra aquí la ayuda que necesitas.</p>
+
     {% if user.is_authenticated %}
         <p id="id_bienvenida">Bienvenido al sistema.</p>
+    {% else %}
+        <p>Encuentra aquí la ayuda que necesitas.</p>
     {% endif %}
 </div>
 {% if messages %}
