@@ -122,5 +122,5 @@ class FunctionalTest (TestCase):
         botonGrabar.click()
 
         self.browser.implicitly_wait(4000)
-        span = self.browser.find_element(By.XPATH, '//span[text()="John Molano"]')
-        self.assertIn("John Molano", span.text)
+        div = self.browser.find_element_by_id('user-name-edit')
+        self.assertIn("John", div.text)
