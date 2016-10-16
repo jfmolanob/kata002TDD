@@ -19,7 +19,7 @@ class FunctionalTest (TestCase):
         self.browser.get('http://localhost:8000')
         link = self.browser.find_element_by_id('id_register')
         link.click()
-        self.browser.implicitly_wait(4000)
+        self.browser.implicitly_wait(90000)
 
         nombre = self.browser.find_element_by_id('id_nombre')
         nombre.send_keys('Jose Miguel')
@@ -124,3 +124,27 @@ class FunctionalTest (TestCase):
         self.browser.implicitly_wait(4000)
         div = self.browser.find_element_by_id('user-name-edit')
         self.assertIn("John", div.text)
+
+    def test06_comentario(self):
+        self.browser.get('http://localhost:8000')
+        link = self.browser.find_element_by_id('trabajador-John')
+        link.click()
+        self.browser.implicitly_wait(4000)
+
+        correo = self.browser.find_element_by_id('correo')
+        correo.clear();
+        correo.send_keys('jm.suarez2014@uniandes.edu.co')
+
+        comentario = self.browser.find_element_by_id('comentario')
+        comentario.clear()
+        comentario.send_keys('Mi comentario 1')
+
+        self.browser.implicitly_wait(10000)
+        link = self.browser.find_element_by_id('comment-button')
+        self.browser.implicitly_wait(10000)
+        link.click()
+        self.browser.implicitly_wait(4000)
+
+        div = self.browser.find_element(By.XPATH, '//p[text()="Mi comentario 1"]')
+
+        self.assertIn("Mi comentario 1", div.text)
